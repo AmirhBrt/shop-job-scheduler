@@ -1,12 +1,13 @@
+from src.machine import Machine
 
 
 class Job:
-    def __init__(self, pk, process_times: dict[int: float]):
+    def __init__(self, pk, process_times: dict[Machine: float]):
         self.pk = pk
         self.process_times = process_times
 
-    def get_machine_process_time(self, machine_pk):
-        return self.process_times.get(machine_pk, 0)
+    def get_machine_process_time(self, machine: Machine):
+        return self.process_times.get(machine, 0)
 
     def __eq__(self, other):
         if isinstance(other, type(self)):

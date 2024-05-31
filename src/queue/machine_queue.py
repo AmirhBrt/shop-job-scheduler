@@ -13,6 +13,12 @@ class MachineQueue:
     def pop(self):
         self.tasks.pop(0)
 
+    def last_task_due(self):
+        if len(self.tasks) == 0:
+            return 0
+        last_task = self.tasks[-1]
+        return last_task.due
+
     def idle_time(self):
         sum_idle_time = 0
         last_arrival = 0
