@@ -18,3 +18,12 @@ class Task:
     @property
     def due(self) -> float:
         return self.__arrival + self.exec_time
+
+    def __eq__(self, other):
+        if isinstance(other, type(self)):
+            if (self.arrival, self.exec_time, self.job) == (other.arrival, other.exec_time, other.job):
+                return True
+        return False
+
+    def __hash__(self):
+        return hash((self.arrival, self.exec_time, self.job))
