@@ -36,6 +36,7 @@ class RandomShopJobScheduler(BaseShopJobScheduler):
             for machine in machines_order:
                 queue = self.get_machine_queue(machine)
                 task = Task(job, job.get_machine_process_time(machine))
+                # todo: complete scheduling tasks
 
     def get_machine_queue(self, machine: Machine) -> MachineQueue:
         queue = self.queues.get(machine)
