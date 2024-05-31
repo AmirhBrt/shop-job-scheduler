@@ -11,7 +11,7 @@
   "jobs": [
     {
       "pk": 1,
-      "exec times": [
+      "process times": [
         {
           "machine pk": 1,
           "amount": 6
@@ -24,7 +24,7 @@
     },
     {
       "pk": 2,
-      "exec times": [
+      "process times": [
         {
           "machine pk": 1,
           "amount": 2
@@ -37,7 +37,7 @@
     },
     {
       "pk": 3,
-      "exec times": [
+      "process times": [
         {
           "machine pk": 1,
           "amount": 8
