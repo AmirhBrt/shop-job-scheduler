@@ -1,8 +1,8 @@
 import json
 
-from src.machine import Machine
-from src.scheduler import RandomShopJobScheduler, JohnsonShopJobScheduler
 from src.job import Job
+from src.machine import Machine
+from src.scheduler import JohnsonShopJobScheduler, RandomShopJobScheduler
 
 
 class Runner:
@@ -47,7 +47,7 @@ class Runner:
             RandomShopJobScheduler(
                 machines=machines,
                 jobs=jobs,
-            )
+            ).schedule()
         elif self.__config["algorithm"] == "johnson":
             JohnsonShopJobScheduler(
                 machines=machines,
