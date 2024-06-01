@@ -6,6 +6,12 @@
     },
     {
       "pk": 2
+    },
+    {
+      "pk": 3
+    },
+    {
+      "pk": 4
     }
   ],
   "jobs": [
@@ -14,11 +20,19 @@
       "process times": [
         {
           "machine pk": 1,
-          "amount": 6
+          "amount": 3
         },
         {
           "machine pk": 2,
+          "amount": 2
+        },
+        {
+          "machine pk": 3,
           "amount": 4
+        },
+        {
+          "machine pk": 4,
+          "amount": 5
         }
       ]
     },
@@ -27,11 +41,19 @@
       "process times": [
         {
           "machine pk": 1,
-          "amount": 2
+          "amount": 4
         },
         {
           "machine pk": 2,
-          "amount": 4
+          "amount": 3
+        },
+        {
+          "machine pk": 3,
+          "amount": 5
+        },
+        {
+          "machine pk": 4,
+          "amount": 6
         }
       ]
     },
@@ -40,13 +62,42 @@
       "process times": [
         {
           "machine pk": 1,
-          "amount": 8
+          "amount": 2
+        },
+        {
+          "machine pk": 2,
+          "amount": 1
+        },
+        {
+          "machine pk": 3,
+          "amount": 3
+        },
+        {
+          "machine pk": 4,
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "pk": 4,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 5
         },
         {
           "machine pk": 2,
           "amount": 4
+        },
+        {
+          "machine pk": 3,
+          "amount": 6
+        },
+        {
+          "machine pk": 4,
+          "amount": 7
         }
       ]
-    }
+    }    
   ]
 }

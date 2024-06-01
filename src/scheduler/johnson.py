@@ -13,6 +13,10 @@ class JohnsonShopJobScheduler(BaseShopJobScheduler):
             T1 = sum([job.process_times[m] for m in self.machines[:k]])
             T2 = sum([job.process_times[m] for m in self.machines[k:]])
             fictitious_times.append([T1, T2])
+        print("Fictitious Machines:")
+        for m1, m2 in fictitious_times:
+            print(f"M1 = {m1:<6} M2 = {m2}")
+        print(15*"-", end="\n")
         return self._johnsons_algorithm(fictitious_times)
 
     def _johnsons_algorithm(self, processing_times):
@@ -64,6 +68,6 @@ class JohnsonShopJobScheduler(BaseShopJobScheduler):
             print(f"Machine {machine.pk}")
             for t in q.tasks:
                 print(
-                    f"job = {t.job.pk} -- arrival {t.arrival} -- exec = {t.exec_time}"
+                    f"job = {t.job.pk:<6} arrival = {t.arrival:<6} exec = {t.exec_time}"
                 )
             print(15 * "-")
