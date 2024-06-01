@@ -1,5 +1,5 @@
 {
-  "algorithm": "random",
+  "algorithm": "johnson",
   "machines": [
     {
       "pk": 1

@@ -6,10 +6,10 @@ from src.queue import MachineQueue
 
 
 class BaseShopJobScheduler(abc.ABC):
-    def __init__(self, machines: set[Machine], jobs: set[Job]):
+    def __init__(self, machines: list[Machine], jobs: list[Job]):
         self.machines = machines
         self.jobs = jobs
-        self.queues: dict[Machine: MachineQueue] = dict()
+        self.queues: dict[Machine: MachineQueue] = {m: MachineQueue(m) for m in self.machines}
 
     @abc.abstractmethod
     def get_job_order(self) -> list[Job]:

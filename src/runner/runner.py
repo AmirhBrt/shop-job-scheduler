@@ -12,8 +12,8 @@ class Runner:
         with open(file_path) as f:
             self.__config = json.load(f)
 
-    def __create_jobs(self) -> set[Job]:
-        jobs = set()
+    def __create_jobs(self) -> list[Job]:
+        jobs = list()
         for data in self.__config.get("jobs"):
             process_times = {}
             for process_time in data["process times"]:
@@ -23,16 +23,16 @@ class Runner:
                 pk=data["pk"],
                 process_times=process_times
             )
-            jobs.add(job)
+            jobs.append(job)
         return jobs
 
-    def __create_machines(self) -> set[Machine]:
-        machines = set()
+    def __create_machines(self) -> list[Machine]:
+        machines = list()
         for data in self.__config.get("machines"):
             m = Machine(
                 pk=data["pk"],
             )
-            machines.add(m)
+            machines.append(m)
             self.__machines[data["pk"]] = m
         return machines
 
@@ -41,8 +41,8 @@ class Runner:
         return ["random", "johnson", ]
 
     def run(self):
-        jobs = self.__create_jobs()
         machines = self.__create_machines()
+        jobs = self.__create_jobs()
         if self.__config["algorithm"] == "random":
             RandomShopJobScheduler(
                 machines=machines,
@@ -52,5 +52,6 @@ class Runner:
             JohnsonShopJobScheduler(
                 machines=machines,
                 jobs=jobs,
-            )
-        raise ValueError(f"Invalid algorithm chosen! Must be from one of {self.__get_algorithms()}")
+            ).schedule()
+        else:
+            raise ValueError(f"Invalid algorithm chosen! Must be from one of {self.__get_algorithms()}")
