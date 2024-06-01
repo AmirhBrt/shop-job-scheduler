@@ -23,8 +23,8 @@ class MachineQueue:
         sum_idle_time = 0
         last_arrival = 0
         for task in self.tasks:
-            sum_idle_time += last_arrival - task.arrival
-            last_arrival = task.arrival
+            sum_idle_time += task.arrival - last_arrival
+            last_arrival = task.due
         return sum_idle_time
 
     def __eq__(self, other):

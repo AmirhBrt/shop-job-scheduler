@@ -39,6 +39,7 @@ class BaseShopJobScheduler(abc.ABC):
             print(f"Machine {machine.pk}")
             for t in q.tasks:
                 print(
-                    f"job = {t.job.pk:<6} arrival = {t.arrival:<6} exec = {t.exec_time}"
+                    f"{str(t.job):<6} arrival = {t.arrival:<6} exec = {t.exec_time}"
                 )
             print(15 * "-")
+        print(f"Make Span = {sum([queue.idle_time() for queue in self.queues.values()])}")
