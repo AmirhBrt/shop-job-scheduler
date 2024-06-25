@@ -86,4 +86,6 @@ class GeneticShopJobScheduler(BaseShopJobScheduler):
         return best_solution
 
     def get_machine_order(self) -> list[Machine]:
-        return self.machines
+        machines = self.machines[:]
+        machines.sort(key=lambda machine: self.queues[machine].last_task_due())
+        return machines

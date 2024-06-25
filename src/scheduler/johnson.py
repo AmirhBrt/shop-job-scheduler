@@ -2,7 +2,7 @@ import random
 
 from src.job import Job
 from src.machine import Machine
-from .base import BaseShopJobScheduler
+from src.scheduler.base import BaseShopJobScheduler
 
 
 class JohnsonShopJobScheduler(BaseShopJobScheduler):
@@ -42,10 +42,9 @@ class JohnsonShopJobScheduler(BaseShopJobScheduler):
         return [self.jobs[i] for i in job_order]
 
     def get_machine_order(self) -> list[Machine]:
-        # k = len(self.machines) // 2
-        # length = len(self.machines)
-        # machine_order: list[Machine] = random.sample(
-        #     self.machines[:k], k
-        # ) + random.sample(self.machines[k:], length - k)
-        # return machine_order
-        return self.machines
+        k = len(self.machines) // 2
+        length = len(self.machines)
+        machine_order: list[Machine] = random.sample(
+            self.machines[:k], k
+        ) + random.sample(self.machines[k:], length - k)
+        return machine_order

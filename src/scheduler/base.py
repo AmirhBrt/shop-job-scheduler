@@ -1,4 +1,5 @@
 import abc
+from collections import defaultdict
 
 from src.job import Job, Task
 from src.machine import Machine
@@ -20,9 +21,7 @@ class BaseShopJobScheduler(abc.ABC):
         raise NotImplementedError
 
     def _schedule(self, job_orders: list[Job]):
-        machines_last_due_times: dict[Machine:float] = {}
-        for machine in self.machines:
-            machines_last_due_times[machine] = 0
+        machines_last_due_times: dict[Machine:float] = defaultdict(float)
         machine_orders: list[Machine] = self.get_machine_order()
         for job in job_orders:
             last = 0
