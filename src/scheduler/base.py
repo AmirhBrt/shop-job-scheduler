@@ -19,9 +19,7 @@ class BaseShopJobScheduler(abc.ABC):
     def get_machine_order(self) -> list[Machine]:
         raise NotImplementedError
 
-    def schedule(self):
-        job_orders: list[Job] = self.get_job_order()
-        print(f"Order = {list(map(lambda j: str(j), job_orders))}")
+    def _schedule(self, job_orders: list[Job]) -> int:
         machines_last_due_times: dict[Machine:float] = {}
         for machine in self.machines:
             machines_last_due_times[machine] = 0
@@ -34,6 +32,11 @@ class BaseShopJobScheduler(abc.ABC):
                 machines_last_due_times[m] = t.arrival + job.process_times[m]
                 self.queues[m].push(t)
                 last = machines_last_due_times[m]
+    
+    def schedule(self):        
+        job_orders = self.get_job_order()
+        self._schedule(job_orders)
+        print(f"Order = {list(map(lambda j: str(j), job_orders))}")
         print(15 * "-")
         for machine, q in self.queues.items():
             print(f"Machine {machine.pk}")
@@ -42,4 +45,5 @@ class BaseShopJobScheduler(abc.ABC):
                     f"{str(t.job):<6} arrival = {t.arrival:<6} exec = {t.exec_time}"
                 )
             print(15 * "-")
-        print(f"Make Span = {sum([queue.idle_time() for queue in self.queues.values()])}")
+        makespan = max(self.queues.values(), key=lambda q: q.last_task_due()).last_task_due()
+        print(f"Make Span = {makespan}")

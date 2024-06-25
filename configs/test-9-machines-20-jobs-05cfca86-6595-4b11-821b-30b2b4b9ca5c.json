@@ -1,0 +1,854 @@
+{
+  "algorithm": "genetic",
+  "machines": [
+    {
+      "pk": 1
+    },
+    {
+      "pk": 2
+    },
+    {
+      "pk": 3
+    },
+    {
+      "pk": 4
+    },
+    {
+      "pk": 5
+    },
+    {
+      "pk": 6
+    },
+    {
+      "pk": 7
+    },
+    {
+      "pk": 8
+    },
+    {
+      "pk": 9
+    }
+  ],
+  "jobs": [
+    {
+      "pk": 1,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 9
+        },
+        {
+          "machine pk": 2,
+          "amount": 9
+        },
+        {
+          "machine pk": 3,
+          "amount": 1
+        },
+        {
+          "machine pk": 4,
+          "amount": 9
+        },
+        {
+          "machine pk": 5,
+          "amount": 10
+        },
+        {
+          "machine pk": 6,
+          "amount": 7
+        },
+        {
+          "machine pk": 7,
+          "amount": 9
+        },
+        {
+          "machine pk": 8,
+          "amount": 4
+        },
+        {
+          "machine pk": 9,
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "pk": 2,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 8
+        },
+        {
+          "machine pk": 2,
+          "amount": 10
+        },
+        {
+          "machine pk": 3,
+          "amount": 7
+        },
+        {
+          "machine pk": 4,
+          "amount": 2
+        },
+        {
+          "machine pk": 5,
+          "amount": 1
+        },
+        {
+          "machine pk": 6,
+          "amount": 1
+        },
+        {
+          "machine pk": 7,
+          "amount": 3
+        },
+        {
+          "machine pk": 8,
+          "amount": 6
+        },
+        {
+          "machine pk": 9,
+          "amount": 10
+        }
+      ]
+    },
+    {
+      "pk": 3,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 5
+        },
+        {
+          "machine pk": 2,
+          "amount": 10
+        },
+        {
+          "machine pk": 3,
+          "amount": 7
+        },
+        {
+          "machine pk": 4,
+          "amount": 7
+        },
+        {
+          "machine pk": 5,
+          "amount": 8
+        },
+        {
+          "machine pk": 6,
+          "amount": 5
+        },
+        {
+          "machine pk": 7,
+          "amount": 1
+        },
+        {
+          "machine pk": 8,
+          "amount": 1
+        },
+        {
+          "machine pk": 9,
+          "amount": 10
+        }
+      ]
+    },
+    {
+      "pk": 4,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 7
+        },
+        {
+          "machine pk": 2,
+          "amount": 6
+        },
+        {
+          "machine pk": 3,
+          "amount": 5
+        },
+        {
+          "machine pk": 4,
+          "amount": 10
+        },
+        {
+          "machine pk": 5,
+          "amount": 4
+        },
+        {
+          "machine pk": 6,
+          "amount": 9
+        },
+        {
+          "machine pk": 7,
+          "amount": 10
+        },
+        {
+          "machine pk": 8,
+          "amount": 8
+        },
+        {
+          "machine pk": 9,
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "pk": 5,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 4
+        },
+        {
+          "machine pk": 2,
+          "amount": 1
+        },
+        {
+          "machine pk": 3,
+          "amount": 5
+        },
+        {
+          "machine pk": 4,
+          "amount": 1
+        },
+        {
+          "machine pk": 5,
+          "amount": 6
+        },
+        {
+          "machine pk": 6,
+          "amount": 8
+        },
+        {
+          "machine pk": 7,
+          "amount": 10
+        },
+        {
+          "machine pk": 8,
+          "amount": 2
+        },
+        {
+          "machine pk": 9,
+          "amount": 4
+        }
+      ]
+    },
+    {
+      "pk": 6,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 2
+        },
+        {
+          "machine pk": 2,
+          "amount": 5
+        },
+        {
+          "machine pk": 3,
+          "amount": 3
+        },
+        {
+          "machine pk": 4,
+          "amount": 5
+        },
+        {
+          "machine pk": 5,
+          "amount": 6
+        },
+        {
+          "machine pk": 6,
+          "amount": 4
+        },
+        {
+          "machine pk": 7,
+          "amount": 3
+        },
+        {
+          "machine pk": 8,
+          "amount": 8
+        },
+        {
+          "machine pk": 9,
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "pk": 7,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 4
+        },
+        {
+          "machine pk": 2,
+          "amount": 10
+        },
+        {
+          "machine pk": 3,
+          "amount": 6
+        },
+        {
+          "machine pk": 4,
+          "amount": 2
+        },
+        {
+          "machine pk": 5,
+          "amount": 1
+        },
+        {
+          "machine pk": 6,
+          "amount": 1
+        },
+        {
+          "machine pk": 7,
+          "amount": 8
+        },
+        {
+          "machine pk": 8,
+          "amount": 6
+        },
+        {
+          "machine pk": 9,
+          "amount": 8
+        }
+      ]
+    },
+    {
+      "pk": 8,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 4
+        },
+        {
+          "machine pk": 2,
+          "amount": 4
+        },
+        {
+          "machine pk": 3,
+          "amount": 2
+        },
+        {
+          "machine pk": 4,
+          "amount": 7
+        },
+        {
+          "machine pk": 5,
+          "amount": 8
+        },
+        {
+          "machine pk": 6,
+          "amount": 6
+        },
+        {
+          "machine pk": 7,
+          "amount": 9
+        },
+        {
+          "machine pk": 8,
+          "amount": 9
+        },
+        {
+          "machine pk": 9,
+          "amount": 10
+        }
+      ]
+    },
+    {
+      "pk": 9,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 6
+        },
+        {
+          "machine pk": 2,
+          "amount": 8
+        },
+        {
+          "machine pk": 3,
+          "amount": 6
+        },
+        {
+          "machine pk": 4,
+          "amount": 10
+        },
+        {
+          "machine pk": 5,
+          "amount": 7
+        },
+        {
+          "machine pk": 6,
+          "amount": 7
+        },
+        {
+          "machine pk": 7,
+          "amount": 10
+        },
+        {
+          "machine pk": 8,
+          "amount": 7
+        },
+        {
+          "machine pk": 9,
+          "amount": 6
+        }
+      ]
+    },
+    {
+      "pk": 10,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 7
+        },
+        {
+          "machine pk": 2,
+          "amount": 6
+        },
+        {
+          "machine pk": 3,
+          "amount": 4
+        },
+        {
+          "machine pk": 4,
+          "amount": 9
+        },
+        {
+          "machine pk": 5,
+          "amount": 1
+        },
+        {
+          "machine pk": 6,
+          "amount": 1
+        },
+        {
+          "machine pk": 7,
+          "amount": 5
+        },
+        {
+          "machine pk": 8,
+          "amount": 5
+        },
+        {
+          "machine pk": 9,
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "pk": 11,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 3
+        },
+        {
+          "machine pk": 2,
+          "amount": 4
+        },
+        {
+          "machine pk": 3,
+          "amount": 5
+        },
+        {
+          "machine pk": 4,
+          "amount": 3
+        },
+        {
+          "machine pk": 5,
+          "amount": 10
+        },
+        {
+          "machine pk": 6,
+          "amount": 3
+        },
+        {
+          "machine pk": 7,
+          "amount": 6
+        },
+        {
+          "machine pk": 8,
+          "amount": 5
+        },
+        {
+          "machine pk": 9,
+          "amount": 5
+        }
+      ]
+    },
+    {
+      "pk": 12,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 7
+        },
+        {
+          "machine pk": 2,
+          "amount": 1
+        },
+        {
+          "machine pk": 3,
+          "amount": 8
+        },
+        {
+          "machine pk": 4,
+          "amount": 9
+        },
+        {
+          "machine pk": 5,
+          "amount": 5
+        },
+        {
+          "machine pk": 6,
+          "amount": 5
+        },
+        {
+          "machine pk": 7,
+          "amount": 7
+        },
+        {
+          "machine pk": 8,
+          "amount": 3
+        },
+        {
+          "machine pk": 9,
+          "amount": 2
+        }
+      ]
+    },
+    {
+      "pk": 13,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 7
+        },
+        {
+          "machine pk": 2,
+          "amount": 10
+        },
+        {
+          "machine pk": 3,
+          "amount": 5
+        },
+        {
+          "machine pk": 4,
+          "amount": 10
+        },
+        {
+          "machine pk": 5,
+          "amount": 10
+        },
+        {
+          "machine pk": 6,
+          "amount": 8
+        },
+        {
+          "machine pk": 7,
+          "amount": 8
+        },
+        {
+          "machine pk": 8,
+          "amount": 2
+        },
+        {
+          "machine pk": 9,
+          "amount": 5
+        }
+      ]
+    },
+    {
+      "pk": 14,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 2
+        },
+        {
+          "machine pk": 2,
+          "amount": 1
+        },
+        {
+          "machine pk": 3,
+          "amount": 2
+        },
+        {
+          "machine pk": 4,
+          "amount": 3
+        },
+        {
+          "machine pk": 5,
+          "amount": 3
+        },
+        {
+          "machine pk": 6,
+          "amount": 8
+        },
+        {
+          "machine pk": 7,
+          "amount": 10
+        },
+        {
+          "machine pk": 8,
+          "amount": 10
+        },
+        {
+          "machine pk": 9,
+          "amount": 5
+        }
+      ]
+    },
+    {
+      "pk": 15,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 8
+        },
+        {
+          "machine pk": 2,
+          "amount": 3
+        },
+        {
+          "machine pk": 3,
+          "amount": 1
+        },
+        {
+          "machine pk": 4,
+          "amount": 7
+        },
+        {
+          "machine pk": 5,
+          "amount": 3
+        },
+        {
+          "machine pk": 6,
+          "amount": 1
+        },
+        {
+          "machine pk": 7,
+          "amount": 6
+        },
+        {
+          "machine pk": 8,
+          "amount": 1
+        },
+        {
+          "machine pk": 9,
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "pk": 16,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 6
+        },
+        {
+          "machine pk": 2,
+          "amount": 9
+        },
+        {
+          "machine pk": 3,
+          "amount": 10
+        },
+        {
+          "machine pk": 4,
+          "amount": 8
+        },
+        {
+          "machine pk": 5,
+          "amount": 6
+        },
+        {
+          "machine pk": 6,
+          "amount": 7
+        },
+        {
+          "machine pk": 7,
+          "amount": 9
+        },
+        {
+          "machine pk": 8,
+          "amount": 5
+        },
+        {
+          "machine pk": 9,
+          "amount": 3
+        }
+      ]
+    },
+    {
+      "pk": 17,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 1
+        },
+        {
+          "machine pk": 2,
+          "amount": 4
+        },
+        {
+          "machine pk": 3,
+          "amount": 6
+        },
+        {
+          "machine pk": 4,
+          "amount": 8
+        },
+        {
+          "machine pk": 5,
+          "amount": 1
+        },
+        {
+          "machine pk": 6,
+          "amount": 5
+        },
+        {
+          "machine pk": 7,
+          "amount": 9
+        },
+        {
+          "machine pk": 8,
+          "amount": 7
+        },
+        {
+          "machine pk": 9,
+          "amount": 7
+        }
+      ]
+    },
+    {
+      "pk": 18,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 4
+        },
+        {
+          "machine pk": 2,
+          "amount": 9
+        },
+        {
+          "machine pk": 3,
+          "amount": 4
+        },
+        {
+          "machine pk": 4,
+          "amount": 10
+        },
+        {
+          "machine pk": 5,
+          "amount": 1
+        },
+        {
+          "machine pk": 6,
+          "amount": 6
+        },
+        {
+          "machine pk": 7,
+          "amount": 3
+        },
+        {
+          "machine pk": 8,
+          "amount": 5
+        },
+        {
+          "machine pk": 9,
+          "amount": 7
+        }
+      ]
+    },
+    {
+      "pk": 19,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 4
+        },
+        {
+          "machine pk": 2,
+          "amount": 6
+        },
+        {
+          "machine pk": 3,
+          "amount": 7
+        },
+        {
+          "machine pk": 4,
+          "amount": 3
+        },
+        {
+          "machine pk": 5,
+          "amount": 7
+        },
+        {
+          "machine pk": 6,
+          "amount": 1
+        },
+        {
+          "machine pk": 7,
+          "amount": 10
+        },
+        {
+          "machine pk": 8,
+          "amount": 5
+        },
+        {
+          "machine pk": 9,
+          "amount": 9
+        }
+      ]
+    },
+    {
+      "pk": 20,
+      "process times": [
+        {
+          "machine pk": 1,
+          "amount": 7
+        },
+        {
+          "machine pk": 2,
+          "amount": 8
+        },
+        {
+          "machine pk": 3,
+          "amount": 2
+        },
+        {
+          "machine pk": 4,
+          "amount": 6
+        },
+        {
+          "machine pk": 5,
+          "amount": 4
+        },
+        {
+          "machine pk": 6,
+          "amount": 5
+        },
+        {
+          "machine pk": 7,
+          "amount": 9
+        },
+        {
+          "machine pk": 8,
+          "amount": 1
+        },
+        {
+          "machine pk": 9,
+          "amount": 7
+        }
+      ]
+    }
+  ]
+}

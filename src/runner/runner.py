@@ -2,7 +2,7 @@ import json
 
 from src.job import Job
 from src.machine import Machine
-from src.scheduler import JohnsonShopJobScheduler, RandomShopJobScheduler
+from src.scheduler import JohnsonShopJobScheduler, RandomShopJobScheduler, GeneticShopJobScheduler
 
 
 class Runner:
@@ -50,6 +50,11 @@ class Runner:
             ).schedule()
         elif self.__config["algorithm"] == "johnson":
             JohnsonShopJobScheduler(
+                machines=machines,
+                jobs=jobs,
+            ).schedule()
+        elif self.__config["algorithm"] == "genetic":
+            GeneticShopJobScheduler(
                 machines=machines,
                 jobs=jobs,
             ).schedule()

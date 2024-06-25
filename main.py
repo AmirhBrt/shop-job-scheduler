@@ -13,7 +13,7 @@ def run_config(config_file_path):
 
 def main():
     if len(sys.argv) <= 1:
-        run_config("./configs/test-2-machines.json")
+        run_config("./configs/test-8-machines-40-jobs-ec4ac8b0-0d73-4df2-8cc7-8432d64b2475.json")
         return
     name = sys.argv[1]
     if os.path.isdir(name):
