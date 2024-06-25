@@ -1,2 +1,5 @@
-torch==2.3.0
+tensorflow==2.16.1
 numpy==2.0.0
+keras==3.0
+gym==0.26.2
+tqdm==4.66.0

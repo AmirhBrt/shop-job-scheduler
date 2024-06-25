@@ -12,7 +12,7 @@ class Runner:
         with open(file_path) as f:
             self.__config = json.load(f)
 
-    def __create_jobs(self) -> list[Job]:
+    def create_jobs(self) -> list[Job]:
         jobs = list()
         for data in self.__config.get("jobs"):
             process_times = {}
@@ -26,7 +26,7 @@ class Runner:
             jobs.append(job)
         return jobs
 
-    def __create_machines(self) -> list[Machine]:
+    def create_machines(self) -> list[Machine]:
         machines = list()
         for data in self.__config.get("machines"):
             m = Machine(
@@ -41,8 +41,8 @@ class Runner:
         return ["random", "johnson", "genetic", ]
 
     def run(self):
-        machines = self.__create_machines()
-        jobs = self.__create_jobs()
+        machines = self.create_machines()
+        jobs = self.create_jobs()
         if self.__config["algorithm"] == "random":
             RandomShopJobScheduler(
                 machines=machines,
