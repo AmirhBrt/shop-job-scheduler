@@ -1,4 +1,5 @@
 import random
+import typing
 
 from src.job import Job
 from src.machine import Machine
@@ -11,9 +12,9 @@ class GeneticShopJobScheduler(BaseShopJobScheduler):
     MUTATION_RATE = 0.1
     
     def get_job_order(self) -> list[Job]:
-        return self._geentic_algorithm()
+        return self._genetic_algorithm()
 
-    def __initial_poplutation(self, size=10):
+    def __initial_population(self, size=10):
         population = []
         for _ in range(size):
             individual = self.jobs[:]
@@ -21,10 +22,11 @@ class GeneticShopJobScheduler(BaseShopJobScheduler):
             population.append(individual)
         return population
 
-    def __crossover(self, parent1: list[Job], parent2: list[Job]):
+    @staticmethod
+    def __crossover(parent1: list[Job], parent2: list[Job]):
         size = len(parent1)
         start, end = sorted(random.sample(range(size), 2))
-        child = [None] * size
+        child: list[typing.Union[Job, None]] = [None] * size
         
         child[start:end+1] = parent1[start:end+1]
         
@@ -48,13 +50,12 @@ class GeneticShopJobScheduler(BaseShopJobScheduler):
             if random.random() < self.MUTATION_RATE:
                 swap_idx = random.randint(0, len(individual) - 1)
                 individual[i], individual[swap_idx] = individual[swap_idx], individual[i]
-        
 
     def __fitness(self, job: list[Job]):
         self._schedule(job)
-        makespan = max(self.queues.values(), key=lambda q: q.last_task_due()).last_task_due()
+        make_span = max(self.queues.values(), key=lambda q: q.last_task_due()).last_task_due()
         self._reset_machine_queues()
-        return makespan
+        return make_span
 
     def _reset_machine_queues(self):
         self.queues: dict[Machine: MachineQueue] = {m: MachineQueue(m) for m in self.machines}
@@ -62,10 +63,10 @@ class GeneticShopJobScheduler(BaseShopJobScheduler):
     def __get_best_solution(self, population):
         return min(population, key=self.__fitness)
 
-    def _geentic_algorithm(self, round=120):
-        population = self.__initial_poplutation()
+    def _genetic_algorithm(self, episodes=120):
+        population = self.__initial_population()
         best_solution = self.__get_best_solution(population)
-        for _ in range(round):
+        for _ in range(episodes):
             new_population = list()
             for _ in range(len(population) // 2):
                 parent1 = self.__selection(population)

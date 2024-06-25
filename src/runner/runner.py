@@ -38,7 +38,7 @@ class Runner:
 
     @staticmethod
     def __get_algorithms():
-        return ["random", "johnson", ]
+        return ["random", "johnson", "genetic", ]
 
     def run(self):
         machines = self.__create_machines()
