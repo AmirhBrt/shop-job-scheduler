@@ -25,8 +25,7 @@ class ReplayBuffer:
 class DQNAgent:
     def __init__(
             self,
-            state_shape,
-            action_size,
+            jobs,
             learning_rate=0.001,
             gamma=0.95,
             epsilon=1.0,
@@ -35,8 +34,8 @@ class DQNAgent:
             replay_buffer_size=2000,
             batch_size=32
     ):
-        self.state_shape = state_shape
-        self.action_size = action_size
+        self.state_shape = (len(jobs), )
+        self.action_size = len(jobs)
         self.learning_rate = learning_rate
         self.gamma = gamma
         self.epsilon = epsilon
@@ -65,7 +64,9 @@ class DQNAgent:
 
     def act(self, state):
         if np.random.rand() <= self.epsilon:
-            return random.randrange(self.action_size)
+            ls = list(filter(lambda x: x[1] == 0, enumerate(state[0])))
+            sample = random.choice(ls)
+            return sample[0]
         q_values = self.model.predict(state)
         return np.argmax(q_values[0])
 
@@ -85,17 +86,11 @@ class DQNAgent:
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
-    def load(self, name):
-        self.model.load_weights(name)
-
-    def save(self, name):
-        self.model.save_weights(name)
-
     def train(self, env, episodes=1000):
         for e in tqdm(range(episodes)):
             state = env.reset()
             state = np.reshape(state, [1, *self.state_shape])
-            for time in range(500):
+            for time in range(50):
                 action = self.act(state)
                 next_state, reward, done, _ = env.step(action)
                 next_state = np.reshape(next_state, [1, *self.state_shape])
@@ -103,6 +98,6 @@ class DQNAgent:
                 state = next_state
                 if done:
                     self.update_target_model()
-                    print(f"Episode {e+1}/{episodes}, Score: {time}, Epsilon: {self.epsilon:.2}")
+                    print(f"Episode {e+1}/{episodes}, Score: {reward}, Epsilon: {self.epsilon:.2}")
                     break
                 self.replay()

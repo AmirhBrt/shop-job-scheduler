@@ -2,7 +2,8 @@ import json
 
 from src.job import Job
 from src.machine import Machine
-from src.scheduler import JohnsonShopJobScheduler, RandomShopJobScheduler, GeneticShopJobScheduler
+from src.scheduler import JohnsonShopJobScheduler, RandomShopJobScheduler, GeneticShopJobScheduler, DQNScheduler
+from src.scheduler.deep.agent import DQNAgent
 
 
 class Runner:
@@ -38,7 +39,7 @@ class Runner:
 
     @staticmethod
     def __get_algorithms():
-        return ["random", "johnson", "genetic", ]
+        return ["random", "johnson", "genetic", "deep", ]
 
     def run(self):
         machines = self.create_machines()
@@ -57,6 +58,14 @@ class Runner:
             GeneticShopJobScheduler(
                 machines=machines,
                 jobs=jobs,
+            ).schedule()
+        elif self.__config["algorithm"] == "deep":
+            agent = DQNAgent(jobs)
+            # TODO: You must train agent before running it
+            DQNScheduler(
+                machines=machines,
+                jobs=jobs,
+                agent=agent
             ).schedule()
         else:
             raise ValueError(f"Invalid algorithm chosen! Must be from one of {self.__get_algorithms()}")

@@ -14,35 +14,39 @@ class JobSchedulingEnv(gym.Env):
         super(JobSchedulingEnv, self).__init__()
         self.machines = machines
         self.jobs = jobs
-        self.action_space = spaces.Discrete(len(machines) * len(jobs))
-        self.observation_space = spaces.Box(low=0, high=1, shape=(len(jobs), len(machines)), dtype=np.float32)
+        self.action_space = spaces.Discrete(len(jobs))
+        self.observation_space = spaces.Discrete(len(jobs))
         self.state = self._get_initial_state()
         self.machine_queues = {machine: MachineQueue(machine) for machine in machines}
         self.machines_last_due_times = defaultdict(float)
 
     def _get_initial_state(self):
         # Example initial state: matrix of zeros
-        return np.zeros((len(self.jobs), len(self.machines)))
+        return np.zeros(len(self.jobs))
 
     def step(self, action):
-        job_id = action // len(self.machines)
-        machine_id = action % len(self.machines)
+        job_id = action
+
+        if self.state[job_id] > 0:
+            return self.state, float("-inf"), False, {}
 
         job = self.jobs[job_id]
-        machine = self.machines[machine_id]
 
         # Create a task and assign it to the machine's queue
-        exec_time = job.get_machine_process_time(machine)
-        task = Task(job, exec_time)
-        task.arrival = max(self.machines_last_due_times[machine], self.state[job_id, machine_id])
-        self.machines_last_due_times[machine] = task.due
-        self.machine_queues[machine].push(task)
+        last = 0
+        for machine in self.machines:
+            exec_time = job.get_machine_process_time(machine)
+            task = Task(job, exec_time)
+            task.arrival = max(self.machines_last_due_times[machine], last)
+            self.machines_last_due_times[machine] = task.due
+            last = task.due
 
-        # Update the state to reflect the scheduling
-        self.state[job_id, machine_id] = task.due
+            self.machine_queues[machine].push(task)
+
+            self.state[job_id] = task.due
 
         # Calculate reward
-        reward = -self._calculate_make_span()
+        reward = -last
 
         done = self._is_done()
 
@@ -57,15 +61,12 @@ class JobSchedulingEnv(gym.Env):
     def reset(self, **kwargs):
         self.state = self._get_initial_state()
         self.machine_queues = {machine: MachineQueue(machine) for machine in self.machines}
-        self.machines_last_due_times = defaultdict(float)
         return self.state
-
-    def _calculate_make_span(self):
-        # The make-span is the maximum time any machine finishes its tasks
-        make_span = max(queue.last_task_due() for queue in self.machine_queues.values())
-        return make_span
 
     def _is_done(self):
         # Check if all jobs are scheduled
-        scheduled_tasks = [task for queue in self.machine_queues.values() for task in queue.tasks]
+        scheduled_tasks = []
+        for queue in self.machine_queues.values():
+            scheduled_tasks.extend(queue.tasks)
+
         return len(scheduled_tasks) == len(self.jobs) * len(self.machines)
