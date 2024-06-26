@@ -25,12 +25,7 @@ class JobSchedulingEnv(gym.Env):
         return np.zeros(len(self.jobs))
 
     def step(self, action):
-        job_id = action
-
-        if self.state[job_id] > 0:
-            return self.state, float("-inf"), False, {}
-
-        job = self.jobs[job_id]
+        job = self.jobs[action]
 
         # Create a task and assign it to the machine's queue
         last = 0
@@ -43,7 +38,7 @@ class JobSchedulingEnv(gym.Env):
 
             self.machine_queues[machine].push(task)
 
-            self.state[job_id] = task.due
+            self.state[action] = task.due
 
         # Calculate reward
         reward = -last
@@ -52,11 +47,8 @@ class JobSchedulingEnv(gym.Env):
 
         return self.state, reward, done, {}
 
-    def render(self, mode='human'):
-        for machine, queue in self.machine_queues.items():
-            print(f"Machine {machine.pk}:")
-            for task in queue.tasks:
-                print(f"   Task {task.job.pk} arrival={task.arrival} due={task.due}")
+    def render(self, mode="human"):
+        return None
 
     def reset(self, **kwargs):
         self.state = self._get_initial_state()
@@ -65,8 +57,6 @@ class JobSchedulingEnv(gym.Env):
 
     def _is_done(self):
         # Check if all jobs are scheduled
-        scheduled_tasks = []
-        for queue in self.machine_queues.values():
-            scheduled_tasks.extend(queue.tasks)
+        scheduled_tasks = [task for queue in self.machine_queues.values() for task in queue.task]
 
         return len(scheduled_tasks) == len(self.jobs) * len(self.machines)

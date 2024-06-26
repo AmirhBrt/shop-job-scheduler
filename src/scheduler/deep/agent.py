@@ -3,8 +3,11 @@ from collections import deque
 
 import numpy as np
 import keras
-from tqdm import tqdm
+from tqdm.auto import tqdm
 from keras import layers
+
+
+keras.utils.disable_interactive_logging()
 
 
 class ReplayBuffer:
@@ -28,11 +31,11 @@ class DQNAgent:
             jobs,
             learning_rate=0.001,
             gamma=0.95,
-            epsilon=1.0,
+            epsilon=0.8,
             epsilon_min=0.01,
             epsilon_decay=0.995,
-            replay_buffer_size=2000,
-            batch_size=32
+            replay_buffer_size=100,
+            batch_size=5
     ):
         self.state_shape = (len(jobs), )
         self.action_size = len(jobs)
@@ -68,7 +71,10 @@ class DQNAgent:
             sample = random.choice(ls)
             return sample[0]
         q_values = self.model.predict(state)
-        return np.argmax(q_values[0])
+        ls = list(filter(lambda x: state[0][x[0]], enumerate(q_values[0])))
+        if not ls:
+            return np.argmax(q_values[0])
+        return max(ls, key=lambda x: x[1])[0]
 
     def replay(self):
         if self.replay_buffer.size() < self.batch_size:
@@ -90,7 +96,7 @@ class DQNAgent:
         for e in tqdm(range(episodes)):
             state = env.reset()
             state = np.reshape(state, [1, *self.state_shape])
-            for time in range(50):
+            for _ in tqdm(range(50)):
                 action = self.act(state)
                 next_state, reward, done, _ = env.step(action)
                 next_state = np.reshape(next_state, [1, *self.state_shape])
